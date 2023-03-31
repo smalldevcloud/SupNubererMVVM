@@ -14,6 +14,9 @@
 		5BACD12B29D70D19008CDE26 /* SupNubererMVVM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BACD12929D70D19008CDE26 /* SupNubererMVVM.xcdatamodeld */; };
 		5BACD12D29D70D1A008CDE26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BACD12C29D70D1A008CDE26 /* Assets.xcassets */; };
 		5BACD13029D70D1A008CDE26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BACD12E29D70D1A008CDE26 /* LaunchScreen.storyboard */; };
+		5BACD13B29D718F2008CDE26 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACD13A29D718F2008CDE26 /* Client.swift */; };
+		5BACD13E29D71FCD008CDE26 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACD13D29D71FCD008CDE26 /* Dynamic.swift */; };
+		5BACD14029D72021008CDE26 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BACD13F29D72021008CDE26 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		5BACD12C29D70D1A008CDE26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BACD12F29D70D1A008CDE26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BACD13129D70D1A008CDE26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BACD13A29D718F2008CDE26 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		5BACD13D29D71FCD008CDE26 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		5BACD13F29D72021008CDE26 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,51 @@
 		5BACD11F29D70D19008CDE26 /* SupNubererMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				5BACD13929D71851008CDE26 /* ViewModels */,
+				5BACD13829D71845008CDE26 /* Views */,
+				5BACD13729D7183A008CDE26 /* Models */,
 				5BACD12029D70D19008CDE26 /* AppDelegate.swift */,
 				5BACD12229D70D19008CDE26 /* SceneDelegate.swift */,
-				5BACD12429D70D19008CDE26 /* ViewController.swift */,
-				5BACD12629D70D19008CDE26 /* Main.storyboard */,
 				5BACD12C29D70D1A008CDE26 /* Assets.xcassets */,
 				5BACD12E29D70D1A008CDE26 /* LaunchScreen.storyboard */,
 				5BACD13129D70D1A008CDE26 /* Info.plist */,
 				5BACD12929D70D19008CDE26 /* SupNubererMVVM.xcdatamodeld */,
 			);
 			path = SupNubererMVVM;
+			sourceTree = "<group>";
+		};
+		5BACD13729D7183A008CDE26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5BACD13A29D718F2008CDE26 /* Client.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5BACD13829D71845008CDE26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BACD12429D70D19008CDE26 /* ViewController.swift */,
+				5BACD12629D70D19008CDE26 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5BACD13929D71851008CDE26 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5BACD13C29D71F4F008CDE26 /* Bindings */,
+				5BACD13F29D72021008CDE26 /* ViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5BACD13C29D71F4F008CDE26 /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				5BACD13D29D71FCD008CDE26 /* Dynamic.swift */,
+			);
+			path = Bindings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +185,10 @@
 				5BACD12B29D70D19008CDE26 /* SupNubererMVVM.xcdatamodeld in Sources */,
 				5BACD12529D70D19008CDE26 /* ViewController.swift in Sources */,
 				5BACD12129D70D19008CDE26 /* AppDelegate.swift in Sources */,
+				5BACD13E29D71FCD008CDE26 /* Dynamic.swift in Sources */,
+				5BACD13B29D718F2008CDE26 /* Client.swift in Sources */,
 				5BACD12329D70D19008CDE26 /* SceneDelegate.swift in Sources */,
+				5BACD14029D72021008CDE26 /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
