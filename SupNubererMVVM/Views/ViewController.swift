@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var inputTF: UITextField!
     
+    @IBOutlet weak var nameTF: UITextField!
+    
     @IBOutlet weak var resultTF: UITextField!
     
     override func viewDidLoad() {
@@ -23,7 +25,7 @@ class ViewController: UIViewController {
 
     @IBAction func convertPressed(_ sender: Any) {
         
-        viewModel.convertBtnPressed(number: inputTF.text ?? "", name: "")
+        viewModel.convertBtnPressed(number: inputTF.text ?? "", name: nameTF.text ?? "")
     }
     func bindViewModel() {
             

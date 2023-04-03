@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreData
+
 struct Client {
     
     let name: String?
@@ -18,6 +20,9 @@ public class SingletoneArrayOfClients {
     
     static let shared = SingletoneArrayOfClients()
     
-    var listOfClients = [Client]()
-    
+    var listOfClients: [NSManagedObject] = []{
+        didSet{
+            print(listOfClients.count)
+        }
+    }
 }

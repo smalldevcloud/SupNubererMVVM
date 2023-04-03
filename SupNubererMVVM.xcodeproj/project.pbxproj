@@ -72,7 +72,6 @@
 				5BACD12C29D70D1A008CDE26 /* Assets.xcassets */,
 				5BACD12E29D70D1A008CDE26 /* LaunchScreen.storyboard */,
 				5BACD13129D70D1A008CDE26 /* Info.plist */,
-				5BACD12929D70D19008CDE26 /* SupNubererMVVM.xcdatamodeld */,
 			);
 			path = SupNubererMVVM;
 			sourceTree = "<group>";
@@ -81,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				5BACD13A29D718F2008CDE26 /* Client.swift */,
+				5BACD12929D70D19008CDE26 /* SupNubererMVVM.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
