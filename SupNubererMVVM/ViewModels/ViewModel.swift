@@ -6,15 +6,11 @@
 //
 
 import Foundation
-import UIKit
-import CoreData
 
 class ViewModel{
     
-    var whatsThat = Dynamic("")
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate //Singlton instance
-    var context: NSManagedObjectContext!
+    var dynamic = Dynamic("")
+    var coreDataVM = CoreDataViewModel()
     
     func convertBtnPressed(number: String, name: String) {
         
@@ -31,126 +27,79 @@ class ViewModel{
         
         let tempClient = Client(name: name, inputNumber: number, convertedNumber: result)
         
-        whatsThat.value = result
-        //saveClientToCoreData(client: tempClient)
-        //SingletoneArrayOfClients.shared.listOfClients.append(tempClient)
-        //updateSingletoneClientsArray(client: tempClient)
-        checkCoreDataForEmpty(client: tempClient)
-        whereIsMySQLite()
-        
-    }
-    
-    func coreDataToSingletoneArr() {
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext =
-        appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest =
-        NSFetchRequest<NSManagedObject>(entityName: "ClientEntity")
-        
-        //3
-        do {
-            SingletoneArrayOfClients.shared.listOfClients = try managedContext.fetch(fetchRequest)
-            
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
-    func checkCoreDataForEmpty(client: Client){
-        
-        coreDataToSingletoneArr()
-        
-        if SingletoneArrayOfClients.shared.listOfClients.isEmpty {
-            saveClientToCoreData(client: client)
+        dynamic.value = result
+
+        coreDataVM.fetchClients()
+        if isCoreDataEmpty() {
+            coreDataVM.addClient(client: tempClient)
         } else {
-            checkBeforeUpdate(client: client)
-        }
-        
-    }
-    
-    func saveClientToCoreData(client: Client) {
-        
-        
-        context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "ClientEntity", in: context)
-        
-        
-        let newClient = NSManagedObject(entity: entity!, insertInto: context)
-        newClient.setValue(client.name, forKey: "name")
-        newClient.setValue(client.convertedNumber, forKey: "number")
-        newClient.setValue(getDate(), forKey: "lastCall")
-        
-        do {
-            try context.save()
-        } catch {
-            print("Storing data Failed")
-        }
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ClientEntity")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                
-                _ = data.value(forKey: "name") as! String
-                _ = data.value(forKey: "number") as! String
-                _ = data.value(forKey: "lastCall") as? Date
-                
-            }
             
-        } catch {
-            print("Fetching data Failed")
-        }
-    }
-    
-    func checkBeforeUpdate(client: Client) {
-        
-        var isRefreshNeccessery = false
-        
-        coreDataToSingletoneArr()
-        
-        for arrayClient in SingletoneArrayOfClients.shared.listOfClients {
-            if arrayClient.value(forKey: "number") as! String == client.convertedNumber {
-                
-                print("numbers equal")
-                isRefreshNeccessery = false
-                break
+            if isArrContainsThatNumber(newClient: tempClient) {
+
             } else {
-                isRefreshNeccessery = true
-                print("match not found")
+                coreDataVM.addClient(client: tempClient)
             }
         }
+    }
+    
+    func isCoreDataEmpty() -> Bool {
         
-        if isRefreshNeccessery == true {
-            
-            print("updating core data")
-            saveClientToCoreData(client: client)
+        print(coreDataVM.savedEntities.count)
+        
+        if coreDataVM.savedEntities.isEmpty {
+            return true
         } else {
-            print("no need to refresh array")
+            return false
         }
     }
     
-    func getDate() -> Date {
+    func isArrContainsThatNumber(newClient: Client) -> Bool {
+        var isContains = false
         
-        let date = Date()
-        return date
+        for client in coreDataVM.savedEntities {
+
+            if client.number == newClient.convertedNumber {
+                isContains = true
+                break
+
+            } else {
+                isContains = false
+            }
+        }
+        return isContains
     }
     
-    func whereIsMySQLite() {
-        let path = NSPersistentContainer
-            .defaultDirectoryURL()
-            .absoluteString
-            .replacingOccurrences(of: "file://", with: "")
-            .removingPercentEncoding
+    func sendToTelegram() {
         
-        print(path ?? "Not found")
+        var stringToSending = String()
+        
+        for client in coreDataVM.savedEntities {
+            stringToSending = "\(stringToSending)\n\((client.name)!)  \(client.number!)"
+        }
+         
+        let stringUrl = "https://api.telegram.org/bot1697241527:AAH2h-935T9N3MGjLEMKOPtffcuIgT1pu5M/sendMessage?chat_id=@apptest111&text=\(stringToSending)"
+        
+        let url = URL(string:stringUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
+        
+        var request = URLRequest(url: url)
+        
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                
+                DispatchQueue.main.async {
+                    
+                print(responseJSON)
+                }
+            }
+        }
+
+        task.resume()
+        
     }
-    
-    
 }

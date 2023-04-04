@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="KGk-i7-Jjw" customClass="ClientTVCell" customModule="SupNubererMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYq-nr-cTw">
+                        <rect key="frame" x="16.000000000000004" y="18" width="41.333333333333343" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbT-Do-3Fz">
+                        <rect key="frame" x="16.000000000000004" y="47" width="41.333333333333343" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQx-0B-4aS">
+                        <rect key="frame" x="254.66666666666666" y="25" width="49.333333333333343" height="35"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="phone" catalog="system"/>
+                        <connections>
+                            <action selector="callBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zhI-wQ-4Eh"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EYq-nr-cTw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2OI-rb-FQP"/>
+                    <constraint firstItem="HQx-0B-4aS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="6G0-hS-rby"/>
+                    <constraint firstAttribute="bottom" secondItem="AbT-Do-3Fz" secondAttribute="bottom" constant="16" id="BoE-S9-grf"/>
+                    <constraint firstAttribute="trailing" secondItem="HQx-0B-4aS" secondAttribute="trailing" constant="16" id="TKt-ms-epj"/>
+                    <constraint firstItem="AbT-Do-3Fz" firstAttribute="top" secondItem="EYq-nr-cTw" secondAttribute="bottom" constant="8" symbolic="YES" id="WBI-L4-IoA"/>
+                    <constraint firstItem="EYq-nr-cTw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="WBk-kX-NAt"/>
+                    <constraint firstItem="AbT-Do-3Fz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="X81-7J-2sb"/>
+                    <constraint firstAttribute="bottom" secondItem="HQx-0B-4aS" secondAttribute="bottom" constant="24" id="utk-Nu-Dyc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="clientName" destination="EYq-nr-cTw" id="tSg-4A-i1m"/>
+                <outlet property="clientNumber" destination="AbT-Do-3Fz" id="u9E-c1-Jie"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="34.834123222748815"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="phone" catalog="system" width="128" height="115"/>
+    </resources>
+</document>

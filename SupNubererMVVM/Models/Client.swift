@@ -15,14 +15,3 @@ struct Client {
     let convertedNumber: String?
     
 }
-
-public class SingletoneArrayOfClients {
-    
-    static let shared = SingletoneArrayOfClients()
-    
-    var listOfClients: [NSManagedObject] = []{
-        didSet{
-            print(listOfClients.count)
-        }
-    }
-}
