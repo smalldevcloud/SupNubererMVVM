@@ -39,7 +39,7 @@ class CoreDataViewModel {
         let request = NSFetchRequest<ClientEntity>(entityName: "ClientEntity")
         
         do {
-            savedEntities = try container.viewContext.fetch(request)
+            savedEntities = try container.viewContext.fetch(request).reversed()
         } catch let error {
             print("Error fetching. \(error)")
         }
@@ -72,7 +72,7 @@ class CoreDataViewModel {
          do {
              try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
              try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-             print("db cleared")
+
          } catch {
              print("Attempted to clear persistent store: " + error.localizedDescription)
          }

@@ -44,8 +44,6 @@ class ViewModel{
     
     func isCoreDataEmpty() -> Bool {
         
-        print(coreDataVM.savedEntities.count)
-        
         if coreDataVM.savedEntities.isEmpty {
             return true
         } else {

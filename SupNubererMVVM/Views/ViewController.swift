@@ -67,8 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         clientsTV.reloadData()    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("there must be \(viewModel.coreDataVM.savedEntities.count) cells")
+
         return viewModel.coreDataVM.savedEntities.count
     }
     
